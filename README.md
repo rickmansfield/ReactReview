@@ -13,6 +13,28 @@ Let’s understand the core concepts of React, by answering the frequently asked
       - [[] Decalaration](#-decalaration)
     - [[] Handling props](#-handling-props)
     - [[] Handling state](#-handling-state)
+  - [4. What is the virtual DOM? How does react use the virtual DOM to render the UI?](#4-what-is-the-virtual-dom-how-does-react-use-the-virtual-dom-to-render-the-ui)
+    - [Why was virtual DOM introduced?](#why-was-virtual-dom-introduced)
+  - [5. What are the differences between controlled and uncontrolled components?](#5-what-are-the-differences-between-controlled-and-uncontrolled-components)
+  - [6. What are the different lifecycle methods in React?](#6-what-are-the-different-lifecycle-methods-in-react)
+  - [7. Explain Strict Mode in React.](#7-explain-strict-mode-in-react)
+  - [8. How to prevent re-renders in React?](#8-how-to-prevent-re-renders-in-react)
+    - [Reason for re-renders in React:](#reason-for-re-renders-in-react)
+  - [9. Explain React state and props.](#9-explain-react-state-and-props)
+    - [Props](#props)
+    - [State Owned by its component](#state-owned-by-its-component)
+    - [React State](#react-state)
+    - [How to declare a state object?](#how-to-declare-a-state-object)
+    - [How to use and update the state object?](#how-to-use-and-update-the-state-object)
+    - [React Props](#react-props)
+  - [10. Explain React Hooks.](#10-explain-react-hooks)
+  - [11. What are the different ways to style a React component?](#11-what-are-the-different-ways-to-style-a-react-component)
+  - [12. Name a few techniques to optimize React app performance.](#12-name-a-few-techniques-to-optimize-react-app-performance)
+  - [13. What are keys in React?](#13-what-are-keys-in-react)
+  - [14. How to pass data between react components?](#14-how-to-pass-data-between-react-components)
+  - [15. What are Higher Order Components?](#15-what-are-higher-order-components)
+  - [16. What is prop drilling in React?](#16-what-is-prop-drilling-in-react)
+  - [17. What are error boundaries?](#17-what-are-error-boundaries)
 
 
 
@@ -164,6 +186,7 @@ function ClassRoom(props){
 - We __cannot use React Hooks inside class components__, therefore state handling is done very differently in a class component:
 - Let’s take the same above example and convert it into a class component:
 
+```javascript
 class ClassRoom extends React.Component{
           constructor(props){
             super(props);
@@ -187,19 +210,18 @@ class ClassRoom extends React.Component{
             )
           }
          }
-         
-
+```
 In the code above, we see we are using this.state to add the variable studentsCount and setting the value to “0”.
 For reading the state, we are using this.state.studentsCount.
 For updating the state, we need to first bind the addStudent function to this. Only then, we will be able to use the setState function which is used to update the state.
 
 
-4. What is the virtual DOM? How does react use the virtual DOM to render the UI?
-As stated by the react team, virtual DOM is a concept where a virtual representation of the real DOM is kept inside the memory and is synced with the real DOM by a library such as ReactDOM.
+## 4. What is the virtual DOM? How does react use the virtual DOM to render the UI?
+- As stated by the react team, virtual DOM is a concept where a virtual representation of the real DOM is kept inside the memory and is synced with the real DOM by a library such as ReactDOM.
 
 
-
-Why was virtual DOM introduced? DOM manipulation is an integral part of any web application, but DOM manipulation is quite slow when compared to other operations in JavaScript.
+### Why was virtual DOM introduced? 
+- DOM manipulation is an integral part of any web application, but DOM manipulation is quite slow when compared to other operations in JavaScript.
 The efficiency of the application gets affected when several DOM manipulations are being done. Most JavaScript frameworks update the entire DOM even when a small part of the DOM changes.
 For example, consider a list that is being rendered inside the DOM. If one of the items in the list changes, the entire list gets rendered again instead of just rendering the item that was changed/updated. This is called inefficient updating.
 To address the problem of inefficient updating, the react team introduced the concept of virtual DOM.
@@ -219,7 +241,7 @@ Whenever the virtual DOM gets updated, react compares the two virtual DOMs and g
 After knowing which objects were updated, react renders only those objects inside the real DOM instead of rendering the complete real DOM.
 This way, with the use of virtual DOM, react solves the problem of inefficient updating.
 
-5. What are the differences between controlled and uncontrolled components?
+## 5. What are the differences between controlled and uncontrolled components?
 Controlled and uncontrolled components are just different approaches to handling input form elements in react.
 Feature	Uncontrolled	Controlled	Name attrs
 One-time value retrieval (e.g. on submit)	✔️	✔️	✔️
@@ -277,7 +299,7 @@ function FormValidation(props) {
 
 As one can see in the code above, we are not using onChange function to govern the changes made to the input element. Instead, we are using ref to access the value of the input element.
 
-6. What are the different lifecycle methods in React?
+## 6. What are the different lifecycle methods in React?
 Every component in React has lifecycle methods that we can tap into, to trigger changes at a particular phase of the life cycle.
 Each component in react goes through three phases: Mounting, Updating, and Unmounting.
 There are corresponding lifecycle methods for each of the three phases:
@@ -309,7 +331,7 @@ Unmounting:
 
 componentWillUnmount( ) - This method is called just before the component gets destroyed. Any clean up statements should be executed inside this method.
 
-7. Explain Strict Mode in React.
+## 7. Explain Strict Mode in React.
 StrictMode is a tool added in the version 16.3 of React to highlight potential problems in an application. It performs additional checks on the application.
 function App() {
   return (
@@ -352,12 +374,13 @@ Previously, findDOMNode( ) method was used to search the tree of a DOM node. Thi
 Warning about the usage of legacy context API (because the API is error-prone)
 
 
-8. How to prevent re-renders in React?
-Reason for re-renders in React:
-Re-rendering of a component and it’s child components occur when props or state of the component has been changed.
-Re-rendering components that are not updated, affects the performance of an application.
+## 8. How to prevent re-renders in React?
+### Reason for re-renders in React:
+- Re-rendering of a component and it’s child components occur when props or state of the component has been changed.
+- Re-rendering components that are not updated, affects the performance of an application.
 
-How to prevent re-rendering:
+- How to prevent re-rendering:
+```javascript 
 Consider the following components:
 class Parent extends React.Component {
  state = { messageDisplayed: false };
@@ -389,11 +412,14 @@ class Message extends React.Component {
    );
  }
 }
+```
 
-Parent component is the parent component and Message is the child component. Any change in the parent component will lead to re-rendering of the child component as well.
-To prevent the re-rendering of child component, we use the shouldComponentUpdate( ) method:
+- Parent component is the parent component and Message is the child component. Any change in the parent component will lead to re-rendering of the child component as well.
+- To prevent the re-rendering of child component, we use the shouldComponentUpdate( ) method:
 
-**Note- Use shouldComponentUpdate( ) method only when you are sure that it’s a static component.
+__**Note-__ Use shouldComponentUpdate( ) method only when you are sure that it’s a static component.
+
+```javascript
 class Message extends React.Component {
  constructor(props) {
    super(props);
@@ -412,25 +438,30 @@ class Message extends React.Component {
    );
  }
 }
-
+```
 As one can see in the code above, we have returned false from the shouldComponentUpdate( ) method, which prevents the child component from re-rendering.
 
-9. Explain React state and props.
-Props	State
-Immutable	Owned by its component
-Has better performance	Locally scoped
-Can be passed to child components	Witeable/Mutable
-has setState() method to modify properties
-Changes to state can be asynchronous
-can only be passed as props
-React State
-Every component in react has a built-in state object, which contains all the property values that belong to that component.
+## 9. Explain React state and props.
+### Props	
+- Immutable	Owned by its component
+- Has better performance	Locally scoped
+- Can be passed to child components	Witeable/Mutable
+### State Owned by its component
+- Locally scoped
+- Writeable/Mutable
+- has setState() method to modify properties
+- Changes to state can be asynchronous
+- can only be passed as props
+
+### React State
+- Every component in react has a built-in state object, which contains all the property values that belong to that component.
 In other words, the state object controls the behaviour of a component. Any change in the property values of the state object leads to re-rendering of the component.
 
-**Note- State object is not available in functional components but, we can use React Hooks to add state to a functional component.
+__**Note- State__ object is not available in functional components but, we can use React Hooks to add state to a functional component.
 
-How to declare a state object?
+### How to declare a state object?
 Example:
+```Javascript
 class Car extends React.Component{
  constructor(props){
    super(props);
@@ -440,8 +471,10 @@ class Car extends React.Component{
    }
  }
 }
+```
 
-How to use and update the state object?
+### How to use and update the state object?
+```javascript
 class Car extends React.Component {
  constructor(props) {
    super(props);
@@ -466,9 +499,10 @@ class Car extends React.Component {
    );
  }
 }
-
+```
 As one can see in the code above, we can use the state by calling this.state.propertyName and we can change the state object property using setState method.
-React Props
+
+### React Props
 Every react component, accepts a single object argument called props (which stands for “properties”).
 These props can be passed to a component using HTML attributes and the component accepts these props as an argument.
 Using props, we can pass data from one component to another.
@@ -495,7 +529,7 @@ function Car(props) {
 
 ****Note- Props are read-only. They cannot be manipulated or changed inside a component.
 
-10. Explain React Hooks.
+## 10. Explain React Hooks.
 What are Hooks? Hooks are functions that let us “hook into” React state and lifecycle features from a functional component.
 React Hooks cannot be used in class components. They let us write components without class.
 
@@ -514,7 +548,7 @@ function Person(props) {
 
 The state variable “name” can be directly used inside the HTML.
 
-11. What are the different ways to style a React component?
+## 11. What are the different ways to style a React component?
 There are many different ways through which one can style a React component. Some of the ways are :
 Inline Styling
 We can directly style an element using inline style attributes.
@@ -589,7 +623,7 @@ class RandomComponent extends React.Component {
 }
 
 
-12. Name a few techniques to optimize React app performance.
+## 12. Name a few techniques to optimize React app performance.
 There are many ways through which one can optimize the performance of a React app, let’s have a look at some of them:
 
 Using useMemo( ) -
@@ -610,7 +644,7 @@ Lazy Loading -
 It is a technique used to reduce the load time of a React app. Lazy loading helps reduce the risk of web app performances to minimal.
 
 
-13. What are keys in React?
+## 13. What are keys in React?
 
 A key is a special string attribute that needs to be included when using lists of elements.
 Example of a list using key:
@@ -631,7 +665,7 @@ With keys, React has an idea of which particular element was deleted,edited, and
 Keys are generally used for displaying a list of data coming from an API.
 ***Note- Keys used within arrays should be unique among siblings. They need not be globally unique.
 
-14. How to pass data between react components?
+## 14. How to pass data between react components?
 
 Parent Component to Child Component (using props)
 With the help of props, we can send data from a parent to a child component.
@@ -704,7 +738,7 @@ In the code above, we have used the props.counterValue and set it to a variable 
 Next, on button click, we pass the incremented childCounterValue to the props.callbackFunc.
 This way, we can pass data from the child to the parent component.
 
-15. What are Higher Order Components?
+## 15. What are Higher Order Components?
 Simply put, Higher Order Component(HOC) is a function that takes in a component and returns a new component.
 
 
@@ -840,13 +874,13 @@ const UsersListWithHOC = HOC(UsersList, (GlobalDataSource) => GlobalDataSource.g
 
 Remember, we are not trying to change the functionality of each component, we are trying to share a single functionality across multiple components using HOC.
 
-16. What is prop drilling in React?
+## 16. What is prop drilling in React?
 
 Sometimes while developing React applications, there is a need to pass data from a component that is higher in the hierarchy to a component that is deeply nested.
 To pass data between such components, we pass props from a source component, and keep passing the prop to the next component in the hierarchy till we reach the deeply nested component.
 The disadvantage of using prop drilling is that the components that should otherwise be not aware of the data have access to the data.
 
-17. What are error boundaries?
+## 17. What are error boundaries?
 Introduced in the version 16 of React, Error boundaries provide a way for us to catch errors that occur in the render phase.
 
 What is an error boundary?
