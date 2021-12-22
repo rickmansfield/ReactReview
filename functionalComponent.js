@@ -36,8 +36,6 @@ export const functionalComponent = () => {
 
 //this example uses rfcredux
 import React from 'react'
-import { connect } from 'react-redux'
-
 export const functionalComponent = (props) => {
     return (
         <div>

@@ -1,4 +1,5 @@
 //Example of handling props in a Functional component
+//In functional components, the handling of props is pretty straight forward. Any prop provided as an argument to a functional component, can be directly used inside HTML elements:
 <StudentInfo name="Vivek" rollNumber="23" />
 
 function StudentInfo(props) {
