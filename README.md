@@ -7,7 +7,9 @@ For developers coming from JavaScript background, the process of developing web 
 Let’s understand the core concepts of React, by answering the frequently asked interview questions.
 
 - [REACT REVIEW](#react-review)
-  - [1. What are the advantages of using React?](#1-what-are-the-advantages-of-using-react)
+  - [1. What is React](#1-what-is-react)
+  - [2. What are the advantages of using React?](#2-what-are-the-advantages-of-using-react)
+  - [3. What are the limitations of React?](#3-what-are-the-limitations-of-react)
   - [2. What is JSX?](#2-what-is-jsx)
   - [3. What are the differences between functional and class components?](#3-what-are-the-differences-between-functional-and-class-components)
       - [[] Decalaration](#-decalaration)
@@ -37,8 +39,16 @@ Let’s understand the core concepts of React, by answering the frequently asked
   - [17. What are error boundaries?](#17-what-are-error-boundaries)
 
 
+## 1. What is React
+- React is a front-end and open-source JavaScript library which is useful in developing user interfaces specifically for applications with a single page. It is helpful in building complex and reusable user interface(UI) components of mobile and web applications as it follows the component-based approach.
 
-## 1. What are the advantages of using React?
+- The important features of React are:
+
+  - It supports server-side rendering.
+  - It will make use of the virtual DOM rather than real DOM (Data Object Model) as RealDOM manipulations are expensive.
+  - It follows unidirectional data binding or data flow.
+  - It uses reusable or composable UI components for developing the view
+## 2. What are the advantages of using React?
 - MVC is generally abbreviated as __Model View Controller__.
 
 - ### Use of Virtual DOM to improve efficiency
@@ -56,6 +66,13 @@ Let’s understand the core concepts of React, by answering the frequently asked
 - ### Huge ecosystem of libraries to choose from
   - React provides you the freedom to choose the tools, libraries, and architecture for developing an application based on your requirement.
 
+
+## 3. What are the limitations of React?
+
+- React is not a full-blown framework as it is only a library.
+The components of React are numerous and will take time to fully grasp the benefits of all.
+- It might be difficult for beginner programmers to understand React.
+Coding might become complex as it will make use of inline templating and JSX.
 
 ## 2. What is JSX?
 - JSX stands for JavaScript XML.
