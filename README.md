@@ -10,8 +10,12 @@ Let’s understand the core concepts of React, by answering the frequently asked
   - [1. What is React](#1-what-is-react)
   - [2. What are the advantages of using React?](#2-what-are-the-advantages-of-using-react)
   - [3. What are the limitations of React?](#3-what-are-the-limitations-of-react)
-  - [2. What is JSX?](#2-what-is-jsx)
-  - [3. What are the differences between functional and class components?](#3-what-are-the-differences-between-functional-and-class-components)
+  - [4. What is useState() in React?](#4-what-is-usestate-in-react)
+  - [5. What are keys in React?](#5-what-are-keys-in-react)
+    - [importance of Keys](#importance-of-keys)
+      - [***Note***](#note)
+  - [6. What is JSX?](#6-what-is-jsx)
+  - [7. What are the differences between functional and class components?](#7-what-are-the-differences-between-functional-and-class-components)
       - [[] Decalaration](#-decalaration)
     - [[] Handling props](#-handling-props)
     - [[] Handling state](#-handling-state)
@@ -74,7 +78,50 @@ The components of React are numerous and will take time to fully grasp the benef
 - It might be difficult for beginner programmers to understand React.
 Coding might become complex as it will make use of inline templating and JSX.
 
-## 2. What is JSX?
+## 4. What is useState() in React?
+- The useState() is a built-in React Hook that allows you for having state variables in functional components. It should be used when the DOM has something that is dynamically manipulating/controlling.
+
+- In the below-given example code, The useState(0) will return a tuple where the count is the first parameter that represents the counter’s current state and the second parameter setCounter method will allow us to update the state of the counter.
+
+``` Javascript 
+...
+const [count, setCounter] = useState(0);
+const [otherStuffs, setOtherStuffs] = useState(...);
+...
+const setCount = () => {
+   setCounter(count + 1);
+   setOtherStuffs(...);
+   ...
+};
+```
+We can make use of setCounter() method for updating the state of count anywhere. In this example, we are using setCounter() inside the setCount function where various other things can also be done. The idea with the usage of hooks is that we will be able to keep our code more functional and avoid class-based components if they are not required
+
+## 5. What are keys in React?
+A key is a special string attribute that needs to be included when using lists of elements.
+- Use Array .map method
+- NOT a for loop
+- Give each item a unique key
+- Avoid using array index as the key
+
+``` javascript
+const ids = [1,2,3,4,5];
+const listElements = ids.map((id)=>{
+return(
+<li key={id.toString()}>
+  {id}
+</li>
+)
+})
+```
+### importance of Keys
+- Keys help react identify which elements were added, changed or removed.
+- Keys should be given to array elements for providing a unique identity for each element.
+- Without keys, React does not understand the order or uniqueness of each element.
+- With keys, React has an idea of which particular element was deleted, edited, and added.
+- Keys are generally used for displaying a list of data coming from an API.
+#### ***Note***
+- Keys used within arrays should be unique among siblings. They need not be globally unique
+## 6. What is JSX?
 - JSX stands for JavaScript XML.
 It allows us to write HTML inside JavaScript and place them in the DOM without using functions like appendChild( ) or createElement( ).
 As stated in the official docs of React, JSX provides syntactic sugar for React.createElement( ) function.
@@ -99,7 +146,7 @@ ReactDOM.render(container,rootElement);
 ```
 As one can see in the code above, we are directly using HTML inside JavaScript.
 
-## 3. What are the differences between functional and class components?
+## 7. What are the differences between functional and class components?
 - Before the introduction of Hooks in React, functional components were called stateless components and were behind class components on feature basis. After the introduction of Hooks, functional components are equivalent to class components.
 - Although functional components are the new trend, the react team insists on keeping class components in React. Therefore, it is important to know how these both components differ.
 - On the following basis let’s compare functional and class components:
