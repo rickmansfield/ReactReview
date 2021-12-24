@@ -319,7 +319,9 @@ Controlled and uncontrolled components are just different approaches to handling
   - In a controlled component, the value of the input element is controlled by React.
    - We store the state of the input element inside the code, and by using event-based callbacks, any changes made to the input element will be reflected in the code as well.
 When a user enters data inside the input element of a controlled component, onChange function gets triggered and inside the code we check whether the value entered is valid or invalid. If the value is valid, we change the state and re-render the input element with new value.
-Example of a controlled component:
+
+- ### Example of a controlled component:
+```javascript
 function FormValidation(props) {
  let [inputValue, setInputValue] = useState("");
 
@@ -335,7 +337,7 @@ function FormValidation(props) {
    </div>
  );
 }
-
+```
 As one can see in the code above, the value of the input element is determined by the state of the inputValue variable. Any changes made to the input element is handled by the updateInput function.
 
 Uncontrolled component In an uncontrolled component, the value of the input element is handled by the DOM itself.
