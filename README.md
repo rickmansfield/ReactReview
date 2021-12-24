@@ -312,17 +312,12 @@ Whenever a JSX element gets rendered, every virtual DOM object gets updated.
 
 ## 9. What are the differences between controlled and uncontrolled components?
 Controlled and uncontrolled components are just different approaches to handling input form elements in react.
-Feature	Uncontrolled	Controlled	Name attrs
-One-time value retrieval (e.g. on submit)	✔️	✔️	✔️
-Validating on submit	✔️	✔️	✔️
-Field-level Validation	❌	✔️	✔️
-Conditionally disabling submit button	❌	✔️	✔️
-Enforcing input format	❌	✔️	✔️
-several inputs for one piece of data	❌	✔️	✔️
-dynamic inputs	❌	✔️	🤔
 
-Controlled component In a controlled component, the value of the input element is controlled by React.
-We store the state of the input element inside the code, and by using event-based callbacks, any changes made to the input element will be reflected in the code as well.
+![image](../ReactReview/images/DOM3.JPG)
+
+- ### Controlled component:
+  - In a controlled component, the value of the input element is controlled by React.
+   - We store the state of the input element inside the code, and by using event-based callbacks, any changes made to the input element will be reflected in the code as well.
 When a user enters data inside the input element of a controlled component, onChange function gets triggered and inside the code we check whether the value entered is valid or invalid. If the value is valid, we change the state and re-render the input element with new value.
 Example of a controlled component:
 function FormValidation(props) {
