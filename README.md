@@ -23,7 +23,7 @@ Let’s understand the core concepts of React, by answering the frequently asked
     - [Why was virtual DOM introduced?](#why-was-virtual-dom-introduced)
     - [**Note](#note-1)
   - [9. What are the differences between controlled and uncontrolled components?](#9-what-are-the-differences-between-controlled-and-uncontrolled-components)
-  - [6. What are the different lifecycle methods in React?](#6-what-are-the-different-lifecycle-methods-in-react)
+  - [10. What are the different lifecycle methods in React?](#10-what-are-the-different-lifecycle-methods-in-react)
   - [7. Explain Strict Mode in React.](#7-explain-strict-mode-in-react)
   - [8. How to prevent re-renders in React?](#8-how-to-prevent-re-renders-in-react)
     - [Reason for re-renders in React:](#reason-for-re-renders-in-react)
@@ -340,11 +340,16 @@ function FormValidation(props) {
 ```
 As one can see in the code above, the value of the input element is determined by the state of the inputValue variable. Any changes made to the input element is handled by the updateInput function.
 
-Uncontrolled component In an uncontrolled component, the value of the input element is handled by the DOM itself.
-Input elements inside uncontrolled components work just like normal HTML input form elements.
-The state of the input element is handled by the DOM. Whenever the value of the input element is changed,event-based callbacks are not called. Basically, react does not perform any action when there are changes made to the input element.
-Whenever use enters data inside the input field, the updated data is shown directly. To access the value of the input element, we can use ref.
-Example of an uncontrolled component:
+- ### Uncontrolled component:
+  -  In an uncontrolled component, the value of the input element is handled by the DOM itself.
+  -  Input elements inside uncontrolled components work just like normal HTML input form elements.
+  -  The state of the input element is handled by the DOM. 
+  -  Whenever the value of the input element is changed, event-based callbacks are not called. 
+  -  Basically, react does not perform any action when there are changes made to the input element.
+  -  Whenever the user enters data inside the input field, the updated data is shown directly. To access the value of the input element, we can use __ref__.
+  
+- ### Example of an uncontrolled component:
+```javascript
 function FormValidation(props) {
  let inputValue = React.createRef();
 
@@ -362,10 +367,10 @@ function FormValidation(props) {
    </div>
  );
 }
-
+```
 As one can see in the code above, we are not using onChange function to govern the changes made to the input element. Instead, we are using ref to access the value of the input element.
 
-## 6. What are the different lifecycle methods in React?
+## 10. What are the different lifecycle methods in React?
 Every component in React has lifecycle methods that we can tap into, to trigger changes at a particular phase of the life cycle.
 Each component in react goes through three phases: Mounting, Updating, and Unmounting.
 There are corresponding lifecycle methods for each of the three phases:
