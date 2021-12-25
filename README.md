@@ -453,4 +453,4 @@ function Car(props) {
 let [brand, setBrand] = useState(props.brand);
 }
 ```
-Note- Props are read-only. They cannot be manipulated or changed inside a component
+___Note- Props are read-only. They cannot be manipulated or changed inside a component___
