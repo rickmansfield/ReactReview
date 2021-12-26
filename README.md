@@ -31,6 +31,7 @@ Let’s understand the core concepts of React, by answering the frequently asked
   - [12. Explain about types of side effects in React component.](#12-explain-about-types-of-side-effects-in-react-component)
   - [13. What is prop drilling in React?](#13-what-is-prop-drilling-in-react)
   - [14. What are error boundaries?](#14-what-are-error-boundaries)
+    - [__Without user error boundarires:__](#without-user-error-boundarires)
 
 
 ## 1. What is React
@@ -480,6 +481,34 @@ What is an error boundary?
 Any component which uses one of the following lifecycle methods is considered an error boundary.
 In what places can an error boundary detect an error?
 
-Render phase
-Inside a lifecycle method
-Inside the constructor
+- Render phase
+- Inside a lifecycle method
+- Inside the constructor
+
+### __Without user error boundarires:__
+
+``` javascript
+class CounterComponent extends React.Component{
+constructor(props){
+  super(props);
+  this.state = {
+    counterValue: 0
+  }
+  this.incrementCounter = this.incrementCounter.bind(this);
+}
+incrementCounter(){
+  this.setState(prevState => counterValue = prevState+1);
+}
+render(){
+  if(this.state.counter === 2){
+    throw new Error('Crashed');
+  }
+  return(
+    <div>
+      <button onClick={this.incrementCounter}>Increment Value</button>
+      <p>Value of counter: {this.state.counterValue}</p>
+    </div>
+  )
+}
+}
+```
