@@ -30,6 +30,7 @@ Let’s understand the core concepts of React, by answering the frequently asked
     - [__How to use and update the state object?__](#how-to-use-and-update-the-state-object)
   - [12. Explain about types of side effects in React component.](#12-explain-about-types-of-side-effects-in-react-component)
   - [13. What is prop drilling in React?](#13-what-is-prop-drilling-in-react)
+  - [14. What are error boundaries?](#14-what-are-error-boundaries)
 
 
 ## 1. What is React
@@ -471,3 +472,14 @@ There are two types of side effects in React component. They are:
 Sometimes while developing React applications, there is a need to pass data from a component that is higher in the hierarchy to a component that is deeply nested. To pass data between such components, we pass props from a source component and keep passing the prop to the next component in the hierarchy till we reach the deeply nested component.
 
 The ___disadvantage___ of using prop drilling is that the components that should otherwise be not aware of the data have access to the data.
+
+## 14. What are error boundaries?
+Introduced in version 16 of React, Error boundaries provide a way for us to catch errors that occur in the render phase.
+
+What is an error boundary?
+Any component which uses one of the following lifecycle methods is considered an error boundary.
+In what places can an error boundary detect an error?
+
+Render phase
+Inside a lifecycle method
+Inside the constructor
