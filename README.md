@@ -30,6 +30,9 @@ Let’s understand the core concepts of React, by answering the frequently asked
     - [__How to use and update the state object?__](#how-to-use-and-update-the-state-object)
   - [12. Explain about types of side effects in React component.](#12-explain-about-types-of-side-effects-in-react-component)
   - [13. What is prop drilling in React?](#13-what-is-prop-drilling-in-react)
+  - [14. What are error boundaries?](#14-what-are-error-boundaries)
+    - [__Without using error boundaries:__](#without-using-error-boundaries)
+  - [15. What are React Hooks?](#15-what-are-react-hooks)
 
 
 ## 1. What is React
@@ -471,3 +474,87 @@ There are two types of side effects in React component. They are:
 Sometimes while developing React applications, there is a need to pass data from a component that is higher in the hierarchy to a component that is deeply nested. To pass data between such components, we pass props from a source component and keep passing the prop to the next component in the hierarchy till we reach the deeply nested component.
 
 The ___disadvantage___ of using prop drilling is that the components that should otherwise be not aware of the data have access to the data.
+
+## 14. What are error boundaries?
+Introduced in version 16 of React, __Error boundaries__ provide a way for us to __catch errors__ that occur in the __render phase__.
+
+- ### __What is an error boundary?__
+  Any component which uses one of the following lifecycle methods is considered an error boundary.
+
+__In what places can an error boundary detect an error?__
+
+- Render phase
+- Inside a lifecycle method
+- Inside the constructor
+  
+### __Without using error boundaries:__
+
+```javascript
+class CounterComponent extends React.Component{
+constructor(props){
+  super(props);
+  this.state = {
+    counterValue: 0
+  }
+  this.incrementCounter = this.incrementCounter.bind(this);
+}
+incrementCounter(){
+  this.setState(prevState => counterValue = prevState+1);
+}
+render(){
+  if(this.state.counter === 2){
+    throw new Error('Crashed');
+  }
+  return(
+    <div>
+      <button onClick={this.incrementCounter}>Increment Value</button>
+      <p>Value of counter: {this.state.counterValue}</p>
+    </div>
+  )
+}
+}
+```
+In the code above, when the counterValue equals 2, we throw an error inside the render method.
+
+When we are not using the error boundary, instead of seeing an error, we see a blank page. Since any error inside the render method leads to unmounting of the component. To display an error that occurs inside the render method, we use error boundaries.
+
+- ### With error boundaries: 
+  As mentioned above, an error boundary is a component using one or both of the following methods: __static getDerivedStateFromError__ and __componentDidCatch__.
+
+Let’s create an error boundary to handle errors in the render phase:
+
+```javascript
+class ErrorBoundary extends React.Component {
+constructor(props) {
+  super(props);
+  this.state = { hasError: false };
+}
+static getDerivedStateFromError(error) {     
+  return { hasError: true }; 
+}
+ componentDidCatch(error, errorInfo) {       
+  logErrorToMyService(error, errorInfo); 
+}
+render() {
+  if (this.state.hasError) {     
+    return <h4>Something went wrong</h4>     
+  }
+  return this.props.children;
+}
+}
+```
+In the code above, getDerivedStateFromError function renders the fallback UI interface when the render method has an error.
+
+componentDidCatch logs the error information to an error tracking service.
+
+Now with the error boundary, we can render the CounterComponent in the following way:
+
+<ErrorBoundary>
+ <CounterComponent/>
+</ErrorBoundary>
+
+## 15. What are React Hooks?
+React Hooks are the built-in functions that permit developers to use the state and lifecycle methods within React components. Each lifecycle of a component is having 3 phases which include mount, update, and unmount. Along with that, components have properties and states. Hooks will allow using these methods by developers for improving the reuse of code with higher flexibility navigating the component tree.
+
+Using Hook, all features of React can be used without writing class components. For example, before React version 16.8, it required a class component for managing the state of a component. But now using the useState hook, we can keep the state in a functional component.
+
