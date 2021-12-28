@@ -33,6 +33,7 @@ Let’s understand the core concepts of React, by answering the frequently asked
   - [14. What are error boundaries?](#14-what-are-error-boundaries)
     - [__Without using error boundaries:__](#without-using-error-boundaries)
   - [15. What are React Hooks?](#15-what-are-react-hooks)
+  - [16. Explain React Hooks.](#16-explain-react-hooks)
 
 
 ## 1. What is React
@@ -556,9 +557,9 @@ Now with the error boundary, we can render the CounterComponent in the following
 ## 15. What are React Hooks?
 React Hooks are the built-in functions that permit developers to use the state and lifecycle methods within React components. Each lifecycle of a component is having 3 phases which include mount, update, and unmount. Along with that, components have properties and states. Hooks will allow using these methods by developers for improving the reuse of code with higher flexibility navigating the component tree.
 
-Using Hook, all features of React can be used without writing class components. For example, before React version 16.8, it required a class component for managing the state of a component. But now using the useState hook, we can keep the state in a functional component.
+Using Hook, all features of React can be used without writing class components. ___For example___, before React version 16.8, it required a class component for managing the state of a component. But now using the useState hook, we can keep the state in a functional component.
 
-16. Explain React Hooks.
+## 16. Explain React Hooks.
 What are Hooks? Hooks are functions that let us “hook into” React state and lifecycle features from a functional component.
 
 React Hooks cannot be used in class components. They let us write components without class.
