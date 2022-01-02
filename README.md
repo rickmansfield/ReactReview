@@ -34,6 +34,11 @@ Let’s understand the core concepts of React, by answering the frequently asked
     - [__Without using error boundaries:__](#without-using-error-boundaries)
   - [15. What are React Hooks?](#15-what-are-react-hooks)
   - [16. Explain React Hooks.](#16-explain-react-hooks)
+  - [17. What are the rules that must be followed while using React Hooks?](#17-what-are-the-rules-that-must-be-followed-while-using-react-hooks)
+    - [There are 2 rules which must be followed while you code with Hooks:](#there-are-2-rules-which-must-be-followed-while-you-code-with-hooks)
+  - [18.  What is the use of useEffect React Hooks?](#18--what-is-the-use-of-useeffect-react-hooks)
+    - [The useEffect React Hook will accept 2 arguments: useEffect(callback[, dependencies]);](#the-useeffect-react-hook-will-accept-2-arguments-useeffectcallback-dependencies)
+  - [19.  Why do React Hooks make use of refs?](#19--why-do-react-hooks-make-use-of-refs)
 
 
 ## 1. What is React
@@ -581,40 +586,44 @@ let [name, setName] = useState('');
 ```
 The state variable “name” can be directly used inside the HTML. 
 
-17. What are the rules that must be followed while using React Hooks?
-There are 2 rules which must be followed while you code with Hooks:
+## 17. What are the rules that must be followed while using React Hooks?
+### There are 2 rules which must be followed while you code with Hooks:
 
-React Hooks must be called only at the top level. It is not allowed to call them inside the nested functions, loops, or conditions.
-It is allowed to call the Hooks only from the React Function Components.
-18. What is the use of useEffect React Hooks?
-The useEffect React Hook is used for performing the side effects in functional components. With the help of useEffect, you will inform React that your component requires something to be done after rendering the component or after a state change. The function you have passed(can be referred to as “effect”) will be remembered by React and call afterwards the performance of DOM updates is over. Using this, we can perform various calculations such as data fetching, setting up document title, manipulating DOM directly, etc, that don’t target the output value. The useEffect hook will run by default after the first render and also after each update of the component. React will guarantee that the DOM will be updated by the time when the effect has run by it.
+1. React Hooks must be called only at the top level. It is not allowed to call them inside the nested functions, loops, or conditions.
+2. It is allowed to call the Hooks only from the React Function Components.
 
-The useEffect React Hook will accept 2 arguments: useEffect(callback[, dependencies]);
+## 18.  What is the use of useEffect React Hooks?
+- The useEffect React Hook is used for performing the side effects in functional components. With the help of useEffect, you will inform React that your component requires something to be done after rendering the component or after a state change. The function you have passed(can be referred to as “effect”) will be remembered by React and call afterwards the performance of DOM updates is over. 
+- Using this, we can perform various calculations such as data fetching, setting up document title, manipulating DOM directly, etc, that don’t target the output value.
+- The useEffect hook will run by default after the first render and also after each update of the component. React will guarantee that the DOM will be updated by the time when the effect has run by it.
 
-Where the first argument callback represents the function having the logic of side-effect and it will be immediately executed after changes were being pushed to DOM. The second argument dependencies represent an optional array of dependencies. The useEffect() will execute the callback only if there is a change in dependencies in between renderings.
+### The useEffect React Hook will accept 2 arguments: useEffect(callback[, dependencies]);
+
+Where the first argument (the "callback) represents the function having the logic of side-effect and it will be immediately executed after changes are pushed to the DOM. The second argument dependencies represent an optional array of dependencies. The useEffect() will execute the callback only if there is a change in dependencies in between renderings.
 
 Example:
-
+```javascript
 import { useEffect } from 'react';
 function WelcomeGreetings({ name }) {
  const msg = `Hi, ${name}!`;     // Calculates output
  useEffect(() => {
-   document.title = `Welcome to you ${name}`;    // Side-effect!
+   document.title = `Welcome ${name}`;    // Side-effect!
  }, [name]);
  return <div>{msg}</div>;         // Calculates output
 }
+```
 The above code will update the document title which is considered to be a side-effect as it will not calculate the component output directly. That is why updating of document title has been placed in a callback and provided to useEffect().
 
 Consider you don’t want to execute document title update each time on rendering of WelcomeGreetings component and you want it to be executed only when the name prop changes then you need to supply name as a dependency to useEffect(callback, [name]).
 
-19. Why do React Hooks make use of refs?
+## 19.  Why do React Hooks make use of refs?
 Earlier, refs were only limited to class components but now it can also be accessible in function components through the useRef Hook in React.
 
 The refs are used for:
 
-Managing focus, media playback, or text selection.
-Integrating with DOM libraries by third-party.
-Triggering the imperative animations.
+- Managing focus, media playback, or text selection.
+- Integrating with DOM libraries by third-party.
+- Triggering the imperative animations.
 20. What are Custom Hooks?
 A Custom Hook is a function in Javascript whose name begins with ‘use’ and which calls other hooks. It is a part of React v16.8 hook update and permits you for reusing the stateful logic without any need for component hierarchy restructuring.
 
