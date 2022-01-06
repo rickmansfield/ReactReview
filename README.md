@@ -39,6 +39,10 @@ Let’s understand the core concepts of React, by answering the frequently asked
   - [18.  What is the use of useEffect React Hooks?](#18--what-is-the-use-of-useeffect-react-hooks)
     - [The useEffect React Hook will accept 2 arguments: useEffect(callback[, dependencies]);](#the-useeffect-react-hook-will-accept-2-arguments-useeffectcallback-dependencies)
   - [19.  Why do React Hooks make use of refs?](#19--why-do-react-hooks-make-use-of-refs)
+  - [20. What are Custom Hooks?](#20-what-are-custom-hooks)
+- [React Interview Questions for Experienced](#react-interview-questions-for-experienced)
+  - [StrictMode currently helps with the following issues:](#strictmode-currently-helps-with-the-following-issues)
+  - [22. How to prevent re-renders in React?](#22-how-to-prevent-re-renders-in-react)
 
 
 ## 1. What is React
@@ -624,17 +628,18 @@ The refs are used for:
 - Managing focus, media playback, or text selection.
 - Integrating with DOM libraries by third-party.
 - Triggering the imperative animations.
-20. What are Custom Hooks?
-A Custom Hook is a function in Javascript whose name begins with ‘use’ and which calls other hooks. It is a part of React v16.8 hook update and permits you for reusing the stateful logic without any need for component hierarchy restructuring.
+## 20. What are Custom Hooks?
+A Custom Hook is a function in Javascript whose name begins with ‘use’ and which calls other hooks. It is a part of React v16.8 hook update and permits you to reuse stateful logic without any need for component hierarchy restructuring.
 
-In almost all of the cases, custom hooks are considered to be sufficient for replacing render props and HoCs (Higher-Order components) and reducing the amount of nesting required. Custom Hooks will allow you for avoiding multiple layers of abstraction or wrapper hell that might come along with Render Props and HoCs.
+In almost all of the cases, custom hooks are considered to be sufficient for replacing renderable props and HoCs (Higher-Order components) and reducing the amount of nesting required. Custom Hooks will allow you for avoiding multiple layers of abstraction or wrapper hell that might come along with Render Props and HoCs.
 
 The disadvantage of Custom Hooks is it cannot be used inside of the classes.
 
-React Interview Questions for Experienced
+# React Interview Questions for Experienced
 21. Explain Strict Mode in React.
 StrictMode is a tool added in version 16.3 of React to highlight potential problems in an application. It performs additional checks on the application.
 
+```Javascript
 function App() {
  return (
    <React.StrictMode>
@@ -648,8 +653,10 @@ function App() {
    </React.StrictMode>
  );
 }
+```
 To enable StrictMode, <React.StrictMode> tags need to be added inside the application:
 
+```javascript
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
@@ -660,17 +667,18 @@ ReactDOM.render(
 </React.StrictMode>,
 rootElement
 );
-StrictMode currently helps with the following issues:
+```
+## StrictMode currently helps with the following issues:
 
-Identifying components with unsafe lifecycle methods: 
+- __Identifying components with unsafe lifecycle methods:__
 Certain lifecycle methods are unsafe to use in asynchronous react applications. With the use of third-party libraries, it becomes difficult to ensure that certain lifecycle methods are not used.
-StrictMode helps in providing us with a warning if any of the class components use an unsafe lifecycle method.
-Warning about the usage of legacy string API:
+- __Warning for Unsafe Lifecycles:__ StrictMode helps in providing us with a warning if any of the class components use an unsafe lifecycle method.
+- __Warning about the usage of legacy string API:__
 If one is using an older version of React, callback ref is the recommended way to manage refs instead of using the string refs. StrictMode gives a warning if we are using string refs to manage refs.
-Warning about the usage of findDOMNode:
+- __Warning about the usage of findDOMNode:__
 Previously, findDOMNode( ) method was used to search the tree of a DOM node. This method is deprecated in React. Hence, the StrictMode gives us a warning about the usage of this method.
 Warning about the usage of legacy context API (because the API is error-prone).
-22. How to prevent re-renders in React?
+## 22. How to prevent re-renders in React?
 Reason for re-renders in React:
 Re-rendering of a component and its child components occur when props or the state of the component has been changed.
 Re-rendering components that are not updated, affects the performance of an application.
