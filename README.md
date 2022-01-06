@@ -31,6 +31,7 @@ Let’s understand the core concepts of React, by answering the frequently asked
   - [12. Explain about types of side effects in React component.](#12-explain-about-types-of-side-effects-in-react-component)
   - [13. What is prop drilling in React?](#13-what-is-prop-drilling-in-react)
   - [14. What are error boundaries?](#14-what-are-error-boundaries)
+
     - [__Without using error boundaries:__](#without-using-error-boundaries)
   - [15. What are React Hooks?](#15-what-are-react-hooks)
   - [16. Explain React Hooks.](#16-explain-react-hooks)
@@ -491,15 +492,6 @@ Introduced in version 16 of React, __Error boundaries__ provide a way for us to 
 - ### __What is an error boundary?__
   Any component which uses one of the following lifecycle methods is considered an error boundary.
 
-__In what places can an error boundary detect an error?__
-
-- Render phase
-- Inside a lifecycle method
-- Inside the constructor
-  
-### __Without using error boundaries:__
-
-```javascript
 class CounterComponent extends React.Component{
 constructor(props){
   super(props);
@@ -524,6 +516,7 @@ render(){
 }
 }
 ```
+
 In the code above, when the counterValue equals 2, we throw an error inside the render method.
 
 When we are not using the error boundary, instead of seeing an error, we see a blank page. Since any error inside the render method leads to unmounting of the component. To display an error that occurs inside the render method, we use error boundaries.
