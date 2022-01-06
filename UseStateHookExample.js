@@ -7,3 +7,5 @@ function Person(props) {
 // setName is a function to update/change the value of name
 let [name, setName] = useState('');
 }
+
+//there is no reason for this to "not" update wtf. 
