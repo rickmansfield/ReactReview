@@ -721,8 +721,9 @@ render() {
 }
 ```
 
-There is a "Parent" component (named no so cleverly "parent") and the Message is the child component. Any change in the parent component will lead to re-rendering of the child component as well. To prevent the re-rendering of child components, we use the shouldComponentUpdate( ) method:
+There is a "Parent" component (named not so cleverly "parent") and a Message component which is the child component. Any change in the parent component will lead to re-rendering of the child/Message component as well. To prevent the re-rendering of child components, we use the ``shouldComponentUpdate( )`` method:
 **Note- Use shouldComponentUpdate( ) method only when you are sure that it’s a static component.
+
 ```Javascript
 class Message extends React.Component {
 constructor(props) {
@@ -743,9 +744,9 @@ render() {
 }
 }
 ```
-As one can see in the code above, we have returned false from the shouldComponentUpdate( ) method, which prevents the child component from re-rendering. 
+As one can see in the code above, we have returned false from the ``shouldComponentUpdate( )`` method, which prevents the child component from re-rendering. 
 
-1.  What are the different ways to style a React component?
+23.  What are the different ways to style a React component?
 There are many different ways through which one can style a React component. Some of the ways are :
 
 Inline Styling: We can directly style an element using inline style attributes. Make sure the value of style is a JavaScript object:
