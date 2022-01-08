@@ -31,6 +31,18 @@ Let’s understand the core concepts of React, by answering the frequently asked
   - [12. Explain about types of side effects in React component.](#12-explain-about-types-of-side-effects-in-react-component)
   - [13. What is prop drilling in React?](#13-what-is-prop-drilling-in-react)
   - [14. What are error boundaries?](#14-what-are-error-boundaries)
+  - [15. What are React Hooks?](#15-what-are-react-hooks)
+  - [16. Explain React Hooks.](#16-explain-react-hooks)
+  - [17. What are the rules that must be followed while using React Hooks?](#17-what-are-the-rules-that-must-be-followed-while-using-react-hooks)
+    - [There are 2 rules which must be followed while you code with Hooks:](#there-are-2-rules-which-must-be-followed-while-you-code-with-hooks)
+  - [18.  What is the use of useEffect React Hooks?](#18--what-is-the-use-of-useeffect-react-hooks)
+    - [The useEffect React Hook will accept 2 arguments: useEffect(callback[, dependencies]);](#the-useeffect-react-hook-will-accept-2-arguments-useeffectcallback-dependencies)
+  - [19.  Why do React Hooks make use of refs?](#19--why-do-react-hooks-make-use-of-refs)
+  - [20. What are Custom Hooks?](#20-what-are-custom-hooks)
+- [React Interview Questions for Experienced](#react-interview-questions-for-experienced)
+  - [StrictMode currently helps with the following issues:](#strictmode-currently-helps-with-the-following-issues)
+  - [22. How to prevent re-renders in React?](#22-how-to-prevent-re-renders-in-react)
+    - [How to prevent re-rendering](#how-to-prevent-re-rendering)
 
     - [__Without using error boundaries:__](#without-using-error-boundaries)
   - [15. What are React Hooks?](#15-what-are-react-hooks)
@@ -492,6 +504,7 @@ Introduced in version 16 of React, __Error boundaries__ provide a way for us to 
 - ### __What is an error boundary?__
   Any component which uses one of the following lifecycle methods is considered an error boundary.
 
+```Javascript
 class CounterComponent extends React.Component{
 constructor(props){
   super(props);
@@ -673,11 +686,11 @@ Previously, findDOMNode( ) method was used to search the tree of a DOM node. Thi
 Warning about the usage of legacy context API (because the API is error-prone).
 ## 22. How to prevent re-renders in React?
 Reason for re-renders in React:
-Re-rendering of a component and its child components occur when props or the state of the component has been changed.
-Re-rendering components that are not updated, affects the performance of an application.
-How to prevent re-rendering:
+- Re-rendering of a component and its child components occur when props or the state of the component has been changed.
+- Re-rendering components that are not updated, affects the performance of an application.
+### How to prevent re-rendering
 Consider the following components:
-
+```Javascript
 class Parent extends React.Component {
 state = { messageDisplayed: false };
 componentDidMount() {
@@ -706,6 +719,8 @@ render() {
   );
 }
 }
+```
+
 The Parent component is the parent component and the Message is the child component. Any change in the parent component will lead to re-rendering of the child component as well. To prevent the re-rendering of child components, we use the shouldComponentUpdate( ) method:
 **Note- Use shouldComponentUpdate( ) method only when you are sure that it’s a static component.
 
@@ -729,7 +744,7 @@ render() {
 }
 As one can see in the code above, we have returned false from the shouldComponentUpdate( ) method, which prevents the child component from re-rendering. 
 
-23. What are the different ways to style a React component?
+1.  What are the different ways to style a React component?
 There are many different ways through which one can style a React component. Some of the ways are :
 
 Inline Styling: We can directly style an element using inline style attributes. Make sure the value of style is a JavaScript object:
