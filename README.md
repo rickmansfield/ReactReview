@@ -686,7 +686,7 @@ Previously, findDOMNode( ) method was used to search the tree of a DOM node. Thi
 Warning about the usage of legacy context API (because the API is error-prone).
 ## 22. How to prevent re-renders in React?
 Reason for re-renders in React:
-- Re-rendering of a component and its child components occur when props or the state of the component has been changed.
+- Re-rendering of a component and its child components occur when __props__ or the __state__ of the component has been changed.
 - Re-rendering components that are not updated, affects the performance of an application.
 ### How to prevent re-rendering
 Consider the following components:
@@ -721,9 +721,9 @@ render() {
 }
 ```
 
-The Parent component is the parent component and the Message is the child component. Any change in the parent component will lead to re-rendering of the child component as well. To prevent the re-rendering of child components, we use the shouldComponentUpdate( ) method:
+There is a "Parent" component (named no so cleverly "parent") and the Message is the child component. Any change in the parent component will lead to re-rendering of the child component as well. To prevent the re-rendering of child components, we use the shouldComponentUpdate( ) method:
 **Note- Use shouldComponentUpdate( ) method only when you are sure that it’s a static component.
-
+```Javascript
 class Message extends React.Component {
 constructor(props) {
   super(props);
@@ -742,6 +742,7 @@ render() {
   );
 }
 }
+```
 As one can see in the code above, we have returned false from the shouldComponentUpdate( ) method, which prevents the child component from re-rendering. 
 
 1.  What are the different ways to style a React component?
