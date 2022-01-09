@@ -43,6 +43,8 @@ Let’s understand the core concepts of React, by answering the frequently asked
   - [StrictMode currently helps with the following issues:](#strictmode-currently-helps-with-the-following-issues)
   - [22. How to prevent re-renders in React?](#22-how-to-prevent-re-renders-in-react)
     - [How to prevent re-rendering](#how-to-prevent-re-rendering)
+  - [23.  What are the different ways to style a React component?](#23--what-are-the-different-ways-to-style-a-react-component)
+  - [24. Techniques to optimize React app performance.](#24-techniques-to-optimize-react-app-performance)
 
     - [__Without using error boundaries:__](#without-using-error-boundaries)
   - [15. What are React Hooks?](#15-what-are-react-hooks)
@@ -746,10 +748,11 @@ render() {
 ```
 As one can see in the code above, we have returned false from the ``shouldComponentUpdate( )`` method, which prevents the child component from re-rendering. 
 
-23.  What are the different ways to style a React component?
+## 23.  What are the different ways to style a React component?
 There are many different ways through which one can style a React component. Some of the ways are :
 
-Inline Styling: We can directly style an element using inline style attributes. Make sure the value of style is a JavaScript object:
+- Inline Styling: We can directly style an element using inline style attributes. Make sure the value of style is a JavaScript object:
+```Javascript
 class RandomComponent extends React.Component {
  render() {
    return (
@@ -760,7 +763,9 @@ class RandomComponent extends React.Component {
    );
  }
 }
+```
 Using JavaScript object: We can create a separate JavaScript object and set the desired style properties. This object can be used as the value of the inline style attribute.
+```javascript
 class RandomComponent extends React.Component {
  paragraphStyles = {
    color: "Red",
@@ -781,7 +786,10 @@ class RandomComponent extends React.Component {
    );
  }
 }
-CSS Stylesheet: We can create a separate CSS file and write all the styles for the component inside that file. This file needs to be imported inside the component file.
+```
+- CSS Stylesheet: We can create a separate CSS file and write all the styles for the component inside that file. This file needs to be imported inside the component file.
+
+```javascript
 import './RandomComponent.css';
 
 class RandomComponent extends React.Component {
@@ -799,8 +807,10 @@ CSS Modules: We can create a separate CSS module and import this module inside o
  color:"red";
  border:1px solid black;
 }
+```
 We can import this file inside the component and use it:
 
+```javascript
 import styles from  './styles.module.css';
 
 class RandomComponent extends React.Component {
@@ -813,7 +823,8 @@ class RandomComponent extends React.Component {
    );
  }
 }
-24. Name a few techniques to optimize React app performance.
+```
+## 24. Techniques to optimize React app performance.
 There are many ways through which one can optimize the performance of a React app, let’s have a look at some of them:
 
 Using useMemo( ) -
