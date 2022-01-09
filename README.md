@@ -43,6 +43,9 @@ Let’s understand the core concepts of React, by answering the frequently asked
   - [StrictMode currently helps with the following issues:](#strictmode-currently-helps-with-the-following-issues)
   - [22. How to prevent re-renders in React?](#22-how-to-prevent-re-renders-in-react)
     - [How to prevent re-rendering](#how-to-prevent-re-rendering)
+  - [23.  What are the different ways to style a React component?](#23--what-are-the-different-ways-to-style-a-react-component)
+  - [24. Techniques to optimize React app performance.](#24-techniques-to-optimize-react-app-performance)
+  - [25. How to pass data between react components!](#25-how-to-pass-data-between-react-components)
 
     - [__Without using error boundaries:__](#without-using-error-boundaries)
   - [15. What are React Hooks?](#15-what-are-react-hooks)
@@ -746,10 +749,11 @@ render() {
 ```
 As one can see in the code above, we have returned false from the ``shouldComponentUpdate( )`` method, which prevents the child component from re-rendering. 
 
-23.  What are the different ways to style a React component?
+## 23.  What are the different ways to style a React component?
 There are many different ways through which one can style a React component. Some of the ways are :
 
-Inline Styling: We can directly style an element using inline style attributes. Make sure the value of style is a JavaScript object:
+- Inline Styling: We can directly style an element using inline style attributes. Make sure the value of style is a JavaScript object:
+```Javascript
 class RandomComponent extends React.Component {
  render() {
    return (
@@ -760,7 +764,9 @@ class RandomComponent extends React.Component {
    );
  }
 }
+```
 Using JavaScript object: We can create a separate JavaScript object and set the desired style properties. This object can be used as the value of the inline style attribute.
+```javascript
 class RandomComponent extends React.Component {
  paragraphStyles = {
    color: "Red",
@@ -781,7 +787,10 @@ class RandomComponent extends React.Component {
    );
  }
 }
-CSS Stylesheet: We can create a separate CSS file and write all the styles for the component inside that file. This file needs to be imported inside the component file.
+```
+- CSS Stylesheet: We can create a separate CSS file and write all the styles for the component inside that file. This file needs to be imported inside the component file.
+
+```javascript
 import './RandomComponent.css';
 
 class RandomComponent extends React.Component {
@@ -799,8 +808,10 @@ CSS Modules: We can create a separate CSS module and import this module inside o
  color:"red";
  border:1px solid black;
 }
+```
 We can import this file inside the component and use it:
 
+```javascript
 import styles from  './styles.module.css';
 
 class RandomComponent extends React.Component {
@@ -813,25 +824,22 @@ class RandomComponent extends React.Component {
    );
  }
 }
-24. Name a few techniques to optimize React app performance.
+```
+## 24. Techniques to optimize React app performance.
 There are many ways through which one can optimize the performance of a React app, let’s have a look at some of them:
 
-Using useMemo( ) -
-It is a React hook that is used for caching CPU-Expensive functions.
-Sometimes in a React app, a CPU-Expensive function gets called repeatedly due to re-renders of a component, which can lead to slow rendering.
-useMemo( ) hook can be used to cache such functions. By using useMemo( ), the CPU-Expensive function gets called only when it is needed.
-Using React.PureComponent -
-It is a base component class that checks the state and props of a component to know whether the component should be updated.
-Instead of using the simple React.Component, we can use React.PureComponent to reduce the re-renders of a component unnecessarily.
-Maintaining State Colocation -
-This is a process of moving the state as close to where you need it as possible.
-Sometimes in React app, we have a lot of unnecessary states inside the parent component which makes the code less readable and harder to maintain. Not to forget, having many states inside a single component leads to unnecessary re-renders for the component.
-It is better to shift states which are less valuable to the parent component, to a separate component.
-Lazy Loading -
- It is a technique used to reduce the load time of a React app. Lazy loading helps reduce the risk of web app performances to a minimum.
-25. How to pass data between react components?
+- ### Using useMemo( )
+  - It is a React hook that is used for caching CPU-Expensive functions.Sometimes in a React app, a CPU-Expensive function gets called repeatedly due to re-renders of a component, which can lead to slow rendering. ```useMemo( )``` hook can be used to cache such functions. By using ```useMemo( )```, the CPU-Expensive function gets called only when it is needed.
+- ### Using React.PureComponent
+  - It is a base component class that checks the state and props of a component to know whether the component should be updated.nInstead of using the simple ```React.Component```, we can use ```React.PureComponent``` to reduce the re-renders of a component unnecessarily.
+-  ### Maintaining State Colocation 
+   -  This is a process of moving the state as close to where you need it as possible. Sometimes in React app, we have a lot of unnecessary states inside the parent component which makes the code less readable and harder to maintain. Not to forget, having many states inside a single component leads to unnecessary re-renders for the component. It is better to shift states which are less valuable to the parent component, to a separate component.
+- ### Lazy Loading -
+  -  It is a technique used to reduce the load time of a React app. Lazy loading helps reduce the risk of web app performances to a minimum.
+  
+## 25. How to pass data between react components!
 
-Parent Component to Child Component (using props)
+- ### Parent Component to Child Component (using props)
 
 With the help of props, we can send data from a parent to a child component.
 
