@@ -46,6 +46,10 @@ Let’s understand the core concepts of React, by answering the frequently asked
   - [23.  What are the different ways to style a React component?](#23--what-are-the-different-ways-to-style-a-react-component)
   - [24. Techniques to optimize React app performance.](#24-techniques-to-optimize-react-app-performance)
   - [25. How to pass data between react components!](#25-how-to-pass-data-between-react-components)
+    - [__Step1 and Step2:__](#step1-and-step2)
+    - [__Next__: we passed the function callback as a prop to the child component.](#next-we-passed-the-function-callback-as-a-prop-to-the-child-component)
+    - [__Step3__: Pass data from the child to the parent component.](#step3-pass-data-from-the-child-to-the-parent-component)
+  - [26.  What are Higher Order Components?](#26--what-are-higher-order-components)
 
     - [__Without using error boundaries:__](#without-using-error-boundaries)
   - [15. What are React Hooks?](#15-what-are-react-hooks)
@@ -825,6 +829,7 @@ class RandomComponent extends React.Component {
  }
 }
 ```
+___________
 ## 24. Techniques to optimize React app performance.
 There are many ways through which one can optimize the performance of a React app, let’s have a look at some of them:
 
@@ -837,16 +842,15 @@ There are many ways through which one can optimize the performance of a React ap
 - ### Lazy Loading -
   -  It is a technique used to reduce the load time of a React app. Lazy loading helps reduce the risk of web app performances to a minimum.
   
+_______________
 ## 25. How to pass data between react components!
 
 - ### Parent Component to Child Component (using props)
+  With the help of props, we can send data from a parent to a child component.
 
-With the help of props, we can send data from a parent to a child component.
 
-How do we do this?
-
-Consider the following Parent Component:
-
+  Consider the following Parent Component:
+```javascript
 import ChildComponent from "./Child";
    function ParentComponent(props) {
     let [counter, setCounter] = useState(0);
@@ -860,10 +864,11 @@ import ChildComponent from "./Child";
       </div>
     );
    }
+   ```
 As one can see in the code above, we are rendering the child component inside the parent component, by providing a prop called counterValue. The value of the counter is being passed from the parent to the child component.
 
 We can use the data passed by the parent component in the following way:
-
+```javascript
 function ChildComponent(props) {
 return (
   <div>
@@ -871,19 +876,20 @@ return (
   </div>
 );
 }
-We use the props.counterValue to display the data passed on by the parent component.
-
-Child Component to Parent Component (using callbacks)
+```
+We use the ```props.counterValue``` to display the data passed on by the parent component.
+- ### Child Component to Parent Component (using callbacks)
 
 This one is a bit tricky. We follow the steps below:
 
-Create a callback in the parent component which takes in the data needed as a parameter.
-Pass this callback as a prop to the child component.
-Send data from the child component using the callback.
-We are considering the same example above but in this case, we are going to pass the updated counterValue from child to parent.
+- Create a callback in the parent component which takes in the data needed as a parameter.
+- Pass this callback as a prop to the child component.
+- Send data from the child component using the callback. 
+- Note - We are considering the same example above but in this case, we are going to pass the updated counterValue from child to parent.
 
-Step1 and Step2: Create a callback in the parent component, pass this callback as a prop.
-
+### __Step1 and Step2:__
+- Create a callback in the parent component, pass this callback as a prop.
+```javascript
 function ParentComponent(props) {
 let [counter, setCounter] = useState(0);
 let callback = valueFromChild => setCounter(valueFromChild);
@@ -894,12 +900,14 @@ return (
   </div>
 );
 }
+```
 As one can see in the code above, we created a function called callback which takes in the data received from the child component as a parameter.
 
-Next, we passed the function callback as a prop to the child component.
+### __Next__: we passed the function callback as a prop to the child component.
 
-Step3: Pass data from the child to the parent component.
+### __Step3__: Pass data from the child to the parent component.
 
+```javascript
 function ChildComponent(props) {
 let childCounterValue = props.counterValue;
 return (
@@ -910,13 +918,15 @@ return (
   </div>
 );
 }
+```
 In the code above, we have used the props.counterValue and set it to a variable called childCounterValue.
 
 Next, on button click, we pass the incremented childCounterValue to the props.callbackFunc.
 
 This way, we can pass data from the child to the parent component. 
+_____________________
 
-26. What are Higher Order Components?
+## 26.  What are Higher Order Components?
 Simply put, Higher-Order Component(HOC) is a function that takes in a component and returns a new component. 
 
 
