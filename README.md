@@ -50,6 +50,9 @@ Let’s understand the core concepts of React, by answering the frequently asked
     - [__Next__: we passed the function callback as a prop to the child component.](#next-we-passed-the-function-callback-as-a-prop-to-the-child-component)
     - [__Step3__: Pass data from the child to the parent component.](#step3-pass-data-from-the-child-to-the-parent-component)
   - [26.  What are Higher Order Components?](#26--what-are-higher-order-components)
+    - [When do we need a Higher Order Component?](#when-do-we-need-a-higher-order-component)
+    - [Example of a HOC:](#example-of-a-hoc)
+  - [27. What are the different phases of the component lifecycle?](#27-what-are-the-different-phases-of-the-component-lifecycle)
 
     - [__Without using error boundaries:__](#without-using-error-boundaries)
   - [15. What are React Hooks?](#15-what-are-react-hooks)
@@ -930,14 +933,14 @@ _____________________
 Simply put, Higher-Order Component(HOC) is a function that takes in a component and returns a new component. 
 
 
-When do we need a Higher Order Component?
+### When do we need a Higher Order Component?
 
 While developing React applications, we might develop components that are quite similar to each other with minute differences. In most cases, developing similar components might not be an issue but, while developing larger applications we need to keep our code DRY, therefore, we want an abstraction that allows us to define this logic in a single place and share it across components. HOC allows us to create that abstraction.
 
-Example of a HOC:
+### Example of a HOC:
 
 Consider the following components having similar functionality. The following component displays the list of articles:
-
+```javascript
 // "GlobalDataSource" is some global data source
 class ArticlesList extends React.Component {
  constructor(props) {
@@ -971,8 +974,10 @@ class ArticlesList extends React.Component {
    );
  }
 }
+```
 The following component displays the list of users:
 
+```javascript
 // "GlobalDataSource" is some global data source
 class UsersList extends React.Component {
  constructor(props) {
@@ -1006,10 +1011,12 @@ class UsersList extends React.Component {
    );
  }
 }
+```
 Notice the above components, both have similar functionality but, they are calling different methods to an API endpoint.
 
 Let’s create a Higher Order Component to create an abstraction:
 
+```javascript
 // Higher Order Component which takes a component
 // as input and returns another component
 // "GlobalDataSource" is some global data source
@@ -1041,6 +1048,7 @@ function HOC(WrappedComponent, selectData) {
    }
  };
 }
+```
 We know HOC is a function that takes in a component and returns a component.
 
 In the code above, we have created a function called HOC which returns a component and performs functionality that can be shared across both the ArticlesList component and UsersList Component.
@@ -1050,12 +1058,13 @@ The second parameter in the HOC function is the function that calls the method o
 We have reduced the duplicated code of the componentDidUpdate and componentDidMount functions.
 
 Using the concept of Higher-Order Components, we can now render the ArticlesList and UsersList components in the following way:
-
+```javascript
 const ArticlesListWithHOC = HOC(ArticlesList, (GlobalDataSource) => GlobalDataSource.getArticles());
 const UsersListWithHOC = HOC(UsersList, (GlobalDataSource) => GlobalDataSource.getUsers());
+```
 Remember, we are not trying to change the functionality of each component, we are trying to share a single functionality across multiple components using HOC. 
 
-27. What are the different phases of the component lifecycle?
+## 27. What are the different phases of the component lifecycle?
 There are four different phases in the lifecycle of React component. They are:
 
 Initialization: During this phase, React component will prepare by setting up the default props and initial state for the upcoming tough journey.
