@@ -46,6 +46,13 @@ Let’s understand the core concepts of React, by answering the frequently asked
   - [23.  What are the different ways to style a React component?](#23--what-are-the-different-ways-to-style-a-react-component)
   - [24. Techniques to optimize React app performance.](#24-techniques-to-optimize-react-app-performance)
   - [25. How to pass data between react components!](#25-how-to-pass-data-between-react-components)
+    - [__Step1 and Step2:__](#step1-and-step2)
+    - [__Next__: we passed the function callback as a prop to the child component.](#next-we-passed-the-function-callback-as-a-prop-to-the-child-component)
+    - [__Step3__: Pass data from the child to the parent component.](#step3-pass-data-from-the-child-to-the-parent-component)
+  - [26.  What are Higher Order Components?](#26--what-are-higher-order-components)
+    - [When do we need a Higher Order Component?](#when-do-we-need-a-higher-order-component)
+    - [Example of a HOC:](#example-of-a-hoc)
+  - [27. What are the different phases of the component lifecycle?](#27-what-are-the-different-phases-of-the-component-lifecycle)
 
     - [__Without using error boundaries:__](#without-using-error-boundaries)
   - [15. What are React Hooks?](#15-what-are-react-hooks)
@@ -825,6 +832,7 @@ class RandomComponent extends React.Component {
  }
 }
 ```
+___________
 ## 24. Techniques to optimize React app performance.
 There are many ways through which one can optimize the performance of a React app, let’s have a look at some of them:
 
@@ -837,16 +845,15 @@ There are many ways through which one can optimize the performance of a React ap
 - ### Lazy Loading -
   -  It is a technique used to reduce the load time of a React app. Lazy loading helps reduce the risk of web app performances to a minimum.
   
+_______________
 ## 25. How to pass data between react components!
 
 - ### Parent Component to Child Component (using props)
+  With the help of props, we can send data from a parent to a child component.
 
-With the help of props, we can send data from a parent to a child component.
 
-How do we do this?
-
-Consider the following Parent Component:
-
+  Consider the following Parent Component:
+```javascript
 import ChildComponent from "./Child";
    function ParentComponent(props) {
     let [counter, setCounter] = useState(0);
@@ -860,10 +867,11 @@ import ChildComponent from "./Child";
       </div>
     );
    }
+   ```
 As one can see in the code above, we are rendering the child component inside the parent component, by providing a prop called counterValue. The value of the counter is being passed from the parent to the child component.
 
 We can use the data passed by the parent component in the following way:
-
+```javascript
 function ChildComponent(props) {
 return (
   <div>
@@ -871,19 +879,20 @@ return (
   </div>
 );
 }
-We use the props.counterValue to display the data passed on by the parent component.
-
-Child Component to Parent Component (using callbacks)
+```
+We use the ```props.counterValue``` to display the data passed on by the parent component.
+- ### Child Component to Parent Component (using callbacks)
 
 This one is a bit tricky. We follow the steps below:
 
-Create a callback in the parent component which takes in the data needed as a parameter.
-Pass this callback as a prop to the child component.
-Send data from the child component using the callback.
-We are considering the same example above but in this case, we are going to pass the updated counterValue from child to parent.
+- Create a callback in the parent component which takes in the data needed as a parameter.
+- Pass this callback as a prop to the child component.
+- Send data from the child component using the callback. 
+- Note - We are considering the same example above but in this case, we are going to pass the updated counterValue from child to parent.
 
-Step1 and Step2: Create a callback in the parent component, pass this callback as a prop.
-
+### __Step1 and Step2:__
+- Create a callback in the parent component, pass this callback as a prop.
+```javascript
 function ParentComponent(props) {
 let [counter, setCounter] = useState(0);
 let callback = valueFromChild => setCounter(valueFromChild);
@@ -894,12 +903,14 @@ return (
   </div>
 );
 }
+```
 As one can see in the code above, we created a function called callback which takes in the data received from the child component as a parameter.
 
-Next, we passed the function callback as a prop to the child component.
+### __Next__: we passed the function callback as a prop to the child component.
 
-Step3: Pass data from the child to the parent component.
+### __Step3__: Pass data from the child to the parent component.
 
+```javascript
 function ChildComponent(props) {
 let childCounterValue = props.counterValue;
 return (
@@ -910,24 +921,26 @@ return (
   </div>
 );
 }
+```
 In the code above, we have used the props.counterValue and set it to a variable called childCounterValue.
 
 Next, on button click, we pass the incremented childCounterValue to the props.callbackFunc.
 
 This way, we can pass data from the child to the parent component. 
+_____________________
 
-26. What are Higher Order Components?
+## 26.  What are Higher Order Components?
 Simply put, Higher-Order Component(HOC) is a function that takes in a component and returns a new component. 
 
 
-When do we need a Higher Order Component?
+### When do we need a Higher Order Component?
 
 While developing React applications, we might develop components that are quite similar to each other with minute differences. In most cases, developing similar components might not be an issue but, while developing larger applications we need to keep our code DRY, therefore, we want an abstraction that allows us to define this logic in a single place and share it across components. HOC allows us to create that abstraction.
 
-Example of a HOC:
+### Example of a HOC:
 
 Consider the following components having similar functionality. The following component displays the list of articles:
-
+```javascript
 // "GlobalDataSource" is some global data source
 class ArticlesList extends React.Component {
  constructor(props) {
@@ -961,8 +974,10 @@ class ArticlesList extends React.Component {
    );
  }
 }
+```
 The following component displays the list of users:
 
+```javascript
 // "GlobalDataSource" is some global data source
 class UsersList extends React.Component {
  constructor(props) {
@@ -996,10 +1011,12 @@ class UsersList extends React.Component {
    );
  }
 }
+```
 Notice the above components, both have similar functionality but, they are calling different methods to an API endpoint.
 
 Let’s create a Higher Order Component to create an abstraction:
 
+```javascript
 // Higher Order Component which takes a component
 // as input and returns another component
 // "GlobalDataSource" is some global data source
@@ -1031,6 +1048,7 @@ function HOC(WrappedComponent, selectData) {
    }
  };
 }
+```
 We know HOC is a function that takes in a component and returns a component.
 
 In the code above, we have created a function called HOC which returns a component and performs functionality that can be shared across both the ArticlesList component and UsersList Component.
@@ -1040,18 +1058,23 @@ The second parameter in the HOC function is the function that calls the method o
 We have reduced the duplicated code of the componentDidUpdate and componentDidMount functions.
 
 Using the concept of Higher-Order Components, we can now render the ArticlesList and UsersList components in the following way:
-
+```javascript
 const ArticlesListWithHOC = HOC(ArticlesList, (GlobalDataSource) => GlobalDataSource.getArticles());
 const UsersListWithHOC = HOC(UsersList, (GlobalDataSource) => GlobalDataSource.getUsers());
+```
 Remember, we are not trying to change the functionality of each component, we are trying to share a single functionality across multiple components using HOC. 
 
-27. What are the different phases of the component lifecycle?
+## 27. What are the different phases of the component lifecycle?
 There are four different phases in the lifecycle of React component. They are:
 
-Initialization: During this phase, React component will prepare by setting up the default props and initial state for the upcoming tough journey.
-Mounting: Mounting refers to putting the elements into the browser DOM. Since React uses VirtualDOM, the entire browser DOM which has been currently rendered would not be refreshed. This phase includes the lifecycle methods componentWillMount and componentDidMount.
-Updating: In this phase, a component will be updated when there is a change in the state or props of a component. This phase will have lifecycle methods like componentWillUpdate, shouldComponentUpdate, render, and componentDidUpdate.
-Unmounting: In this last phase of the component lifecycle, the component will be removed from the DOM or will be unmounted from the browser DOM. This phase will have the lifecycle method named componentWillUnmount.
+- ### Initialization: 
+  - During this phase, React component will prepare by setting up the default props and initial state for the upcoming tough journey.
+- ### Mounting: 
+  - Mounting refers to putting the elements into the browser DOM. Since React uses VirtualDOM, the entire browser DOM which has been currently rendered would not be refreshed. This phase includes the lifecycle methods componentWillMount and componentDidMount.
+- ### Updating: 
+  - In this phase, a component will be updated when there is a change in the state or props of a component. This phase will have lifecycle methods like componentWillUpdate, shouldComponentUpdate, render, and componentDidUpdate.
+- ### Unmounting: 
+  - In this last phase of the component lifecycle, the component will be removed from the DOM or will be unmounted from the browser DOM. This phase will have the lifecycle method named componentWillUnmount.
 
 28. What are the lifecycle methods of React?
 React lifecycle hooks will have the methods that will be automatically called at different phases in the component lifecycle and thus it provides good control over what happens at the invoked point. It provides the power to effectively control and manipulate what goes on throughout the component lifecycle.
