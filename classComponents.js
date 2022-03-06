@@ -21,9 +21,9 @@ class nameHere extends Component {
 }
 
 export default nameHere;
-import React, { Component } from 'react'
 
 //React class component with inline export
+import React, { Component } from 'react'
 export default class classComponents extends Component {
     render() {
         return (
@@ -33,9 +33,8 @@ export default class classComponents extends Component {
     }
 }
 
-import React, { Component } from 'react'
-
 //React calss component with export at the bottom
+import React, { Component } from 'react'
 export class classComponents extends Component {
     render() {
         return (

@@ -1070,11 +1070,12 @@ There are four different phases in the lifecycle of React component. They are:
 - ### Initialization: 
   - During this phase, React component will prepare by setting up the default props and initial state for the upcoming tough journey.
 - ### Mounting: 
-  - Mounting refers to putting the elements into the browser DOM. Since React uses VirtualDOM, the entire browser DOM which has been currently rendered would not be refreshed. This phase includes the lifecycle methods componentWillMount and componentDidMount.
+  - Mounting refers to putting the elements into the browser DOM. Since React uses VirtualDOM, the entire browser DOM which has been currently rendered would not be refreshed. This phase includes the lifecycle methods ```componentWillMount``` and ```componentDidMount```.
 - ### Updating: 
-  - In this phase, a component will be updated when there is a change in the state or props of a component. This phase will have lifecycle methods like componentWillUpdate, shouldComponentUpdate, render, and componentDidUpdate.
+  - In this phase, a component will be updated when there is a change in the state or props of a component. This phase will have lifecycle methods like ```componentWillUpdate```, ```shouldComponentUpdate```, render, and ```componentDidUpdate```.
 - ### Unmounting: 
-  - In this last phase of the component lifecycle, the component will be removed from the DOM or will be unmounted from the browser DOM. This phase will have the lifecycle method named componentWillUnmount.
+  - In this last phase of the component lifecycle, the component will be removed from the DOM or will be unmounted from the browser DOM. This phase will have the lifecycle method named ```componentWillUnmount```.
+  - ![ing](images/different_phases_of_the_component_lifecycle.png)
 
 28. What are the lifecycle methods of React?
 React lifecycle hooks will have the methods that will be automatically called at different phases in the component lifecycle and thus it provides good control over what happens at the invoked point. It provides the power to effectively control and manipulate what goes on throughout the component lifecycle.
