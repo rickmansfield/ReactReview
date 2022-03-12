@@ -849,6 +849,7 @@ There are many ways through which one can optimize the performance of a React ap
   
 _______________
 ## 25. How to pass data between react components!
+![image](images/How_to_pass_data_between_react_components.png)
 
 - ### Parent Component to Child Component (using props)
   With the help of props, we can send data from a parent to a child component.
@@ -926,12 +927,13 @@ return (
 ```
 In the code above, we have used the props.counterValue and set it to a variable called childCounterValue.
 
-Next, on button click, we pass the incremented childCounterValue to the props.callbackFunc.
+Next, on button click, we pass the incremented childCounterValue to the **props.callbackFunc**.
 
 This way, we can pass data from the child to the parent component. 
 _____________________
 
 ## 26.  What are Higher Order Components?
+![imgage](images/Higher_Order_Components.png)
 Simply put, Higher-Order Component(HOC) is a function that takes in a component and returns a new component. 
 
 
