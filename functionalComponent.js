@@ -11,7 +11,7 @@ function functionalComponent() {
 
 export default functionalComponent
 
-// this example uses rfc
+// this example uses vanilla rfc
 import React from 'react'
 
 export default function functionalComponent() {
@@ -22,7 +22,7 @@ export default function functionalComponent() {
     )
 }
 
-//this example uses rafc that templates a functional component without the functino keyword and with the fat arrow
+//this example uses rafc (React Arrow Function Component) that templates a functional component without the functino keyword and with the fat arrow
 import React from 'react'
 
 export const functionalComponent = () => {
