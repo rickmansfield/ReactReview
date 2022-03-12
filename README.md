@@ -1,5 +1,8 @@
 # REACT REVIEW
 
+Reprinted here in Markdown Language 
+the original work may be viewed online >> [here](https://www.interviewbit.com/react-interview-questions/) <<
+
 React is an efficient, declarative, and flexible open-source JavaScript library for building simple, fast and scalable front-ends.
 
 For developers coming from JavaScript background, the process of developing web applications becomes easier.
@@ -36,7 +39,6 @@ Let’s understand the core concepts of React, by answering the frequently asked
   - [17. What are the rules that must be followed while using React Hooks?](#17-what-are-the-rules-that-must-be-followed-while-using-react-hooks)
     - [There are 2 rules which must be followed while you code with Hooks:](#there-are-2-rules-which-must-be-followed-while-you-code-with-hooks)
   - [18.  What is the use of useEffect React Hooks?](#18--what-is-the-use-of-useeffect-react-hooks)
-    - [The useEffect React Hook will accept 2 arguments: useEffect(callback[, dependencies]);](#the-useeffect-react-hook-will-accept-2-arguments-useeffectcallback-dependencies)
   - [19.  Why do React Hooks make use of refs?](#19--why-do-react-hooks-make-use-of-refs)
   - [20. What are Custom Hooks?](#20-what-are-custom-hooks)
 - [React Interview Questions for Experienced](#react-interview-questions-for-experienced)
@@ -308,7 +310,7 @@ class ClassRoom extends React.Component{
 ## 8. What is the virtual DOM? How does react use the virtual DOM to render the UI?
 - The React Team says, the virtual DOM is a concept where a virtual representation of the real DOM is kept inside the memory and is synced with the real DOM by a library such as ReactDOM.
 
-![imgage](../../lambdaProjects/ReactReview/images/DOM.JPG)
+![imgage](images\DOM.JPG)
 
 
 ### Why was virtual DOM introduced? 
@@ -617,7 +619,7 @@ The state variable “name” can be directly used inside the HTML.
 - Using this, we can perform various calculations such as data fetching, setting up document title, manipulating DOM directly, etc, that don’t target the output value.
 - The useEffect hook will run by default after the first render and also after each update of the component. React will guarantee that the DOM will be updated by the time when the effect has run by it.
 
-### The useEffect React Hook will accept 2 arguments: useEffect(callback[, dependencies]);
+- ### The useEffect React Hook will accept 2 arguments: ```useEffect(callback[, dependencies]);```
 
 Where the first argument (the "callback) represents the function having the logic of side-effect and it will be immediately executed after changes are pushed to the DOM. The second argument dependencies represent an optional array of dependencies. The useEffect() will execute the callback only if there is a change in dependencies in between renderings.
 
@@ -634,7 +636,7 @@ function WelcomeGreetings({ name }) {
 ```
 The above code will update the document title which is considered to be a side-effect as it will not calculate the component output directly. That is why updating of document title has been placed in a callback and provided to useEffect().
 
-Consider you don’t want to execute document title update each time on rendering of WelcomeGreetings component and you want it to be executed only when the name prop changes then you need to supply name as a dependency to useEffect(callback, [name]).
+Consider you don’t want to execute document title update each time on rendering of WelcomeGreetings component and you want it to be executed only when the name prop changes then you need to supply name as a dependency to ```useEffect(callback, [name])```.
 
 ## 19.  Why do React Hooks make use of refs?
 Earlier, refs were only limited to class components but now it can also be accessible in function components through the useRef Hook in React.
@@ -649,7 +651,7 @@ A Custom Hook is a function in Javascript whose name begins with ‘use’ and w
 
 In almost all of the cases, custom hooks are considered to be sufficient for replacing renderable props and HoCs (Higher-Order components) and reducing the amount of nesting required. Custom Hooks will allow you for avoiding multiple layers of abstraction or wrapper hell that might come along with Render Props and HoCs.
 
-The disadvantage of Custom Hooks is it cannot be used inside of the classes.
+The disadvantage of Custom Hooks is it cannot be used inside of the classes or class components. Many projects using legacy class components cannot enjoy the hooks that contemporary functional components get to use. 
 
 # React Interview Questions for Experienced
 21. Explain Strict Mode in React.
