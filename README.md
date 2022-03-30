@@ -55,6 +55,8 @@ Let’s understand the core concepts of React, by answering the frequently asked
     - [When do we need a Higher Order Component?](#when-do-we-need-a-higher-order-component)
     - [Example of a HOC:](#example-of-a-hoc)
   - [27. What are the different phases of the component lifecycle?](#27-what-are-the-different-phases-of-the-component-lifecycle)
+    - [1) CLICK for an Excellent Diagram in React Documentation](#1-click-for-an-excellent-diagram-in-react-documentation)
+    - [2) Super Important to read this >> link ](#2-super-important-to-read-this--link-)
 
     - [__Without using error boundaries:__](#without-using-error-boundaries)
   - [15. What are React Hooks?](#15-what-are-react-hooks)
@@ -1080,7 +1082,8 @@ There are four different phases in the lifecycle of React component. They are:
 - ### Unmounting: 
   - In this last phase of the component lifecycle, the component will be removed from the DOM or will be unmounted from the browser DOM. This phase will have the lifecycle method named ```componentWillUnmount```.
   - ![ing](images/different_phases_of_the_component_lifecycle.png)
-
+### [1) CLICK for an Excellent Diagram in React Documentation](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) 
+### [2) Super Important to read this >> link ](https://reactjs.org/docs/react-component.html)
 28. What are the lifecycle methods of React?
 React lifecycle hooks will have the methods that will be automatically called at different phases in the component lifecycle and thus it provides good control over what happens at the invoked point. It provides the power to effectively control and manipulate what goes on throughout the component lifecycle.
 
