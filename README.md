@@ -42,6 +42,7 @@ Let’s understand the core concepts of React, by answering the frequently asked
   - [19.  Why do React Hooks make use of refs?](#19--why-do-react-hooks-make-use-of-refs)
   - [20. What are Custom Hooks?](#20-what-are-custom-hooks)
 - [React Interview Questions for Experienced](#react-interview-questions-for-experienced)
+  - [21. Explain Strict Mode in React.](#21-explain-strict-mode-in-react)
   - [StrictMode currently helps with the following issues:](#strictmode-currently-helps-with-the-following-issues)
   - [22. How to prevent re-renders in React?](#22-how-to-prevent-re-renders-in-react)
     - [How to prevent re-rendering](#how-to-prevent-re-rendering)
@@ -57,21 +58,10 @@ Let’s understand the core concepts of React, by answering the frequently asked
   - [27. What are the different phases of the component lifecycle?](#27-what-are-the-different-phases-of-the-component-lifecycle)
     - [1) CLICK for an Excellent Diagram in React Documentation](#1-click-for-an-excellent-diagram-in-react-documentation)
     - [2) Super Important to read this >> link ](#2-super-important-to-read-this--link-)
+  - [28. What are the lifecycle methods of React?](#28-what-are-the-lifecycle-methods-of-react)
 
     - [__Without using error boundaries:__](#without-using-error-boundaries)
-  - [15. What are React Hooks?](#15-what-are-react-hooks)
-  - [16. Explain React Hooks.](#16-explain-react-hooks)
-  - [17. What are the rules that must be followed while using React Hooks?](#17-what-are-the-rules-that-must-be-followed-while-using-react-hooks)
-    - [There are 2 rules which must be followed while you code with Hooks:](#there-are-2-rules-which-must-be-followed-while-you-code-with-hooks)
-  - [18.  What is the use of useEffect React Hooks?](#18--what-is-the-use-of-useeffect-react-hooks)
-    - [The useEffect React Hook will accept 2 arguments: useEffect(callback[, dependencies]);](#the-useeffect-react-hook-will-accept-2-arguments-useeffectcallback-dependencies)
-  - [19.  Why do React Hooks make use of refs?](#19--why-do-react-hooks-make-use-of-refs)
-  - [20. What are Custom Hooks?](#20-what-are-custom-hooks)
-- [React Interview Questions for Experienced](#react-interview-questions-for-experienced)
-  - [StrictMode currently helps with the following issues:](#strictmode-currently-helps-with-the-following-issues)
-  - [22. How to prevent re-renders in React?](#22-how-to-prevent-re-renders-in-react)
-
-
+  
 ## 1. What is React
 - React is a front-end and open-source JavaScript library which is useful in developing user interfaces specifically for applications with a single page. It is helpful in building complex and reusable user interface(UI) components of mobile and web applications as it follows the component-based approach.
 
@@ -656,7 +646,7 @@ In almost all of the cases, custom hooks are considered to be sufficient for rep
 The disadvantage of Custom Hooks is it cannot be used inside of the classes or class components. Many projects using legacy class components cannot enjoy the hooks that contemporary functional components get to use. 
 
 # React Interview Questions for Experienced
-21. Explain Strict Mode in React.
+## 21. Explain Strict Mode in React.
 StrictMode is a tool added in version 16.3 of React to highlight potential problems in an application. It performs additional checks on the application.
 
 ```Javascript
@@ -1084,7 +1074,7 @@ There are four different phases in the lifecycle of React component. They are:
   - ![ing](images/different_phases_of_the_component_lifecycle.png)
 ### [1) CLICK for an Excellent Diagram in React Documentation](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) 
 ### [2) Super Important to read this >> link ](https://reactjs.org/docs/react-component.html)
-28. What are the lifecycle methods of React?
+## 28. What are the lifecycle methods of React?
 React lifecycle hooks will have the methods that will be automatically called at different phases in the component lifecycle and thus it provides good control over what happens at the invoked point. It provides the power to effectively control and manipulate what goes on throughout the component lifecycle.
 
 For example, if you are developing the YouTube application, then the application will make use of a network for buffering the videos and it consumes the power of the battery (assume only these two). After playing the video if the user switches to any other application, then you should make sure that the resources like network and battery are being used most efficiently. You can stop or pause the video buffering which in turn stops the battery and network usage when the user switches to another application after video play.
@@ -1340,6 +1330,7 @@ export default class LoginDemoComponent extends Component {
    }
  }
 }
+
 Conclusion
 React has got more popularity among the top IT companies like Facebook, PayPal, Instagram, Uber, etc., around the world especially in India. Hooks is becoming a trend in the React community as it removes the state management complexities.
 
